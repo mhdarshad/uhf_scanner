@@ -1,0 +1,54 @@
+group 'com.ar.uhf2new.uhf2new'
+version '1.0'
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.1.2'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 31
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion 16
+    }
+    sourceSets {
+        main {
+            jni {
+                srcDirs 'src/main/jni', 'src/main/jniLibs'
+            }
+        }
+    }
+    dependencies {
+        //rx Android for updating status
+        implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+        implementation 'io.reactivex.rxjava2:rxjava:2.2.19'
+        implementation files('libs/xUtils-2.5.5.jar')
+        implementation files('libs/IGLBarDecoder.jar')
+        implementation files('libs/jxl.jar')
+        implementation files('libs/cw-deviceapi20191022.jar')
+        //implementation files('/Users/apple/Desktop/sdks/flutter/bin/cache/artifacts/engine/android-x64/flutter.jar')
+
+    }
+
+}
